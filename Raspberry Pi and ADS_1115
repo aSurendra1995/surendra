@@ -1,0 +1,34 @@
+# open the terminal.  
+#create a new file 
+#sudo nano adc_ads1115 
+# Create an ADS1115 ADC (16-bit) instance.
+  
+  adc = Adafruit_ADS1x15.ADS1115()
+ 
+# Or create an ADS1015 ADC (12-bit) instance.
+#adc = Adafruit_ADS1x15.ADS1015()
+ 
+# Note you can change the I2C address from its default (0x48), and/or the I2C
+# bus by passing in these optional parameters:
+#adc = Adafruit_ADS1x15.ADS1015(address=0x49, bus=1)
+# Choose a gain of 1 for reading voltages from 0 to 4.09V.
+# Or pick a different gain to change the range of voltages that are read:
+#  - 2/3 = +/-6.144V
+#  -   1 = +/-4.096V
+#  -   2 = +/-2.048V
+#  -   4 = +/-1.024V
+#  -   8 = +/-0.512V
+#  -  16 = +/-0.256V
+# See table 3 in the ADS1015/ADS1115 datasheet for more info on gain.
+GAIN = 1
+
+while True:
+      values1 = adc.read_adc(0, gain=GAIN)
+      values2 = adc.read_adc(1, gain=GAIN)
+      values3 = adc.read_adc(2, gain=GAIN)
+      values4 = adc.read_adc(3, gain=GAIN)
+      print "analog A0 ---- ",value1
+      print "analog A1 ---- ",value2
+      print "analog A2 ---- ",value3
+      print "analog A3 ---- ",value4
+      
